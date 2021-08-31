@@ -1,0 +1,423 @@
+﻿@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,300,400,700);
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.header-container {
+    padding: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+a {
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 13px;
+    font-family: arial, sans-serif;
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+.apps {
+    display: inline-block;
+    border-radius: 2px;
+    box-sizing: border-box;
+    height: 40px;
+    width: 40px;
+    padding: 8px;
+    color: #000;
+    cursor: pointer;
+}
+
+    .apps:hover {
+        background-color: rgba(60, 64, 67, 0.08);
+        border-radius: 50%;
+    }
+
+    .apps svg {
+        fill: #5f6368;
+    }
+
+.sign-in {
+    font-family: "Google Sans", "Roboto", "RobotoDraft", "Helvetica", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.25px;
+    line-height: 16px;
+    margin-left: 10px;
+    margin-right: 8px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    color: #fff;
+    background: #1a73e8;
+    margin: 0 8px;
+    border: 1px solid transparent;
+    padding: 9px 23px;
+    border-radius: 4px;
+    margin-left: 8px;
+}
+
+    .sign-in:hover {
+        text-decoration: none;
+        -webkit-box-shadow: 0 1px 2px 0 rgb(66 133 244 / 30%), 0 1px 3px 1px rgb(66 133 244 / 15%);
+        box-shadow: 0 1px 2px 0 rgb(66 133 244 / 30%), 0 1px 3px 1px rgb(66 133 244 / 15%);
+        background: #2b7de9;
+    }
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 92px;
+    max-height: 290px;
+    height: calc(100% - 560px);
+    flex-shrink: 0;
+    box-sizing: border-box;
+    justify-content: flex-end;
+    margin-top: 6px;
+}
+
+.search {
+    flex-shrink: 0;
+    box-sizing: border-box;
+    max-height: 160px;
+    padding: 20px;
+    text-align: center;
+    align-self: center;
+    max-width: 100%;
+    width: 616px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 6px;
+}
+
+#search {
+    border-radius: 24px;
+    background-color: #fff;
+    border: 1px solid #dfe1e5;
+    box-shadow: none;
+    height: 44px;
+    width: 584px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.searchBar {
+    width: 100%;
+    max-width: 584px;
+    border: 1px solid #dfe1e5;
+    box-shadow: none;
+    border-radius: 24px;
+    margin-bottom: 18px;
+    padding: 3px;
+}
+
+    .searchBar:hover {
+        box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.08);
+        border: 1px solid transparent;
+    }
+
+.searchIconHolder {
+    display: flex;
+    align-items: center;
+    padding-right: 13px;
+    margin-top: -5px;
+    margin: 0 auto;
+}
+
+.searchIcon {
+    margin-top: 3px;
+    color: #9aa0a6;
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    fill: currentColor;
+    height: 24px;
+    line-height: 24px;
+    position: relative;
+    width: 24px;
+}
+
+.text_area {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.asd {
+    color: transparent;
+    flex: 100%;
+    white-space: pre;
+    height: 34px;
+}
+
+.srch {
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    color: rgba(0, 0, 0, 0.87);
+    word-wrap: break-word;
+    outline: none;
+    display: flex;
+    flex: 100%;
+    -webkit-tap-highlight-color: transparent;
+    margin-top: -37px;
+    height: 34px;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.searchInput {
+    flex: 1;
+    display: flex;
+    padding: 5px 8px 0 16px;
+    padding-left: 14px;
+    margin: 0 auto;
+}
+
+.search_btn {
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    border-radius: 4px;
+    color: #3c4043;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    margin: 11px 4px;
+    padding: 0 16px;
+    line-height: 27px;
+    height: 36px;
+    min-width: 54px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+    .search_btn:hover {
+        border: 1px solid #c6c6c6;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        color: #222;
+        background-image: -webkit-linear-gradient(top, #f8f8f8, #f1f1f1);
+        background-color: #f8f8f8;
+    }
+
+.lucky_btn {
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    border-radius: 4px;
+    color: #3c4043;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    margin: 11px 4px;
+    padding: 0 16px;
+    line-height: 27px;
+    height: 36px;
+    min-width: 54px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+    .lucky_btn:hover {
+        border: 1px solid #c6c6c6;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        color: #222;
+        background-image: -webkit-linear-gradient(top, #f8f8f8, #f1f1f1);
+        background-color: #f8f8f8;
+    }
+
+.voiceIcon-holder {
+    flex: 1 0 auto;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    border: 0;
+    background: transparent;
+    outline: none;
+    padding: 0 8px;
+    width: 24px;
+    line-height: 44px;
+}
+
+.alts {
+    color: #3c4043;
+    font-size: 13px;
+    display: flex;
+    line-height: 28px;
+    font-family: arial, sans-serif;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    flex-grow: 1;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+    .alts a {
+        color: #1a0dab;
+        padding: 0 3px;
+        text-decoration: none;
+    }
+
+        .alts a:hover {
+            text-decoration: underline;
+        }
+
+.country {
+    padding: 15px 30px;
+    border-bottom: 1px solid #dadce0;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.54);
+    font-family: arial, sans-serif;
+}
+
+.footer {
+    background: #f2f2f2;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+}
+
+.footer_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+@media only screen and (max-width: 664px) {
+    .footer_list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0 20px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .alts {
+        margin-top: 5rem;
+    }
+}
+
+.footer_left {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+}
+
+.footer_right {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+}
+
+.footer_link {
+    display: block;
+    padding: 15px;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+a.footer_link {
+    color: #70757a;
+}
+
+[aria-label] {
+    position: relative;
+}
+
+[aria-label="Google apps"]:after {
+    content: attr(aria-label);
+    display: none;
+    position: absolute;
+    top: 110%;
+    z-index: 5000;
+    pointer-events: none;
+    padding: 5px;
+    line-height: 15px;
+    white-space: nowrap;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    text-indent: 0;
+    overflow: visible;
+    font-size: 13px;
+    font-weight: normal;
+    color: white;
+    background-color: #53565a;
+    border-radius: 4px;
+}
+
+[aria-label]:hover:after,
+[aria-label]:focus:after {
+    display: block;
+}
+
+[aria-label="Search by voice"]:after {
+    content: attr(aria-label);
+    display: none;
+    position: absolute;
+    top: 110%;
+    z-index: 5000;
+    pointer-events: none;
+    padding: 5px;
+    line-height: 15px;
+    white-space: nowrap;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    text-indent: 0;
+    overflow: visible;
+    font-size: 11px;
+    font-weight: normal;
+    color: white;
+    background-color: black;
+}
+
+.dRYYxd {
+    display: flex;
+    flex: 0 0 auto;
+    margin-top: -5px;
+    align-items: stretch;
+    flex-direction: row;
+}
+
+.minidiv .dRYYxd {
+    margin-top: 0;
+}
+
+.voiceIcon {
+    height: 24px;
+    width: 24px;
+    vertical-align: middle;
+}
+
+.minidiv .voiceIcon-holder {
+    line-height: 32px;
+}
+
+.minidiv .voiceIcon {
+    width: 20px;
+    height: 20px;
+}
