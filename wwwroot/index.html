@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
-
+    <script src="./lib/jquery/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="img/title_icon.png" type="image/icon type">
     <title>Google</title>
@@ -60,16 +60,19 @@
             </form>
         </div>
         <div class="alts">
-            Google offered in:
-            <a href="https://www.google.com/setprefs?sig=0_MGvm-VyiMxwQqFKOFEOyR1VUjec%3D&amp;hl=ro&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwjkz4ehx5LyAhUZQUEAHUiNAM8Q2ZgBCA4">
+            <textarea id="weatherForecast">
+                
+            </textarea>
+            <!--google offered in:
+            <a href="https://www.google.com/setprefs?sig=0_mgvm-vyimxwqqfkofeoyr1vujec%3d&amp;hl=ro&amp;source=homepage&amp;sa=x&amp;ved=0ahukewjkz4ehx5lyahuzqueahuinam8q2zgbca4">
                 Română
             </a>
-            <a href="https://www.google.com/setprefs?sig=0_MGvm-VyiMxwQqFKOFEOyR1VUjec%3D&amp;hl=hu&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwjkz4ehx5LyAhUZQUEAHUiNAM8Q2ZgBCA8">
+            <a href="https://www.google.com/setprefs?sig=0_mgvm-vyimxwqqfkofeoyr1vujec%3d&amp;hl=hu&amp;source=homepage&amp;sa=x&amp;ved=0ahukewjkz4ehx5lyahuzqueahuinam8q2zgbca8">
                 Magyar
             </a>
-            <a href="https://www.google.com/setprefs?sig=0_MGvm-VyiMxwQqFKOFEOyR1VUjec%3D&amp;hl=de&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwjkz4ehx5LyAhUZQUEAHUiNAM8Q2ZgBCBA">
+            <a href="https://www.google.com/setprefs?sig=0_mgvm-vyimxwqqfkofeoyr1vujec%3d&amp;hl=de&amp;source=homepage&amp;sa=x&amp;ved=0ahukewjkz4ehx5lyahuzqueahuinam8q2zgbcba">
                 Deutsch
-            </a>
+            </a>-->
         </div>
         <div class="footer">
             <div class="country">
@@ -104,5 +107,18 @@
             </div>
         </div>
     </div>
+    <script>
+        var settings = {
+            "url": "/WeatherForecast",
+            "method": "GET",
+            "timeout": 0,
+        };
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            /*let textArea = document.getElementById('#weatherForecast');*/
+            $('#weatherForecast').val("The weather for tomorrow:" + response[0].summary);
+        });
+    </script>
 </body>
 </html>
