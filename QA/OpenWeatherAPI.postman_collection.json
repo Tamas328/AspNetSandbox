@@ -1,0 +1,49 @@
+{
+	"info": {
+		"_postman_id": "b5e48f4b-7a16-4413-afec-b3f16f6c85db",
+		"name": "OpenWeatherAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Weather Forecast",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.openweathermap.org/data/2.5/onecall?lat=46.652010&lon=24.484990&exclude=hourly,minutely&appid=392f1cbc2531c9951e2e9e5fbfab4609",
+					"protocol": "https",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"onecall"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "46.652010"
+						},
+						{
+							"key": "lon",
+							"value": "24.484990"
+						},
+						{
+							"key": "exclude",
+							"value": "hourly,minutely"
+						},
+						{
+							"key": "appid",
+							"value": "392f1cbc2531c9951e2e9e5fbfab4609"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

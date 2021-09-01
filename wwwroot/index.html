@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
-
+    <script src="./lib/jquery/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="img/title_icon.png" type="image/icon type">
     <title>Google</title>
@@ -104,5 +104,16 @@
             </div>
         </div>
     </div>
+    <script>
+        var settings = {
+            "url": "https://localhost:5001/WeatherForecast",
+            "method": "GET",
+            "timeout": 0,
+        };
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+    </script>
 </body>
 </html>
