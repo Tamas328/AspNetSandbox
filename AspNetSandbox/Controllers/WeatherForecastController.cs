@@ -36,15 +36,17 @@ namespace AspNetSandbox.Controllers
 
         public IEnumerable<WeatherForecast> ConvertResponseToWeatherForecast(string content)
         {
-            var json = JObject.Parse(content);
-            var jsonDailyForecast = json["daily"][1];
-            var unixDateTime = jsonDailyForecast.Value<long>("dt");
+            var json = JObject.Parse(content);   
 
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTimeOffset.FromUnixTimeSeconds(unixDateTime).Date,
-                TemperatureC = (int)(jsonDailyForecast["temp"].Value<double>("day") - 273.15f),
-                Summary = jsonDailyForecast["weather"][0].Value<string>("main")
+            return Enumerable.Range(1, 5).Select(index => {
+                var jsonDailyForecast = json["daily"][index];
+                var unixDateTime = jsonDailyForecast.Value<long>("dt");
+                return new WeatherForecast
+                {
+                    Date = DateTimeOffset.FromUnixTimeSeconds(unixDateTime).Date,
+                    TemperatureC = (int)Math.Round(jsonDailyForecast["temp"].Value<double>("day") - 273.15f),
+                    Summary = jsonDailyForecast["weather"][0].Value<string>("main")
+                };
             }).ToArray();
         }
     }
