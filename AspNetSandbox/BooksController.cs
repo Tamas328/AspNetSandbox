@@ -45,7 +45,7 @@ namespace AspNetSandbox
         [HttpGet("{id}")]
         public Book Get(int id)
         {
-            return books[id];
+            return books.Single(book => book.Id == id);
         }
 
         // POST api/<BooksController>
