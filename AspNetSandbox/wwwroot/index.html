@@ -118,7 +118,14 @@
         $.ajax(settings).done(function (response) {
             for (var i = 0; i < response.length; ++i) {
                 console.log(response[i]);
-                $('#weatherForecast').append("<div class=\"weatherContainer\">" + moment(response[i].date).format('dddd') + "<br>Temperature: " + response[i].temperatureC + "<br>Summary: " + response[i].summary + "</div>");
+                var iconurl = "http://openweathermap.org/img/w/" + response[i].icon + ".png";
+                $('#weatherForecast').append("<div class=\"weatherContainer\">" +
+                    moment(response[i].date).format('dddd') + "<br>Temperature: " +
+                    response[i].temperatureC + "<br>Summary: " +
+                    response[i].summary +
+                    "<img id=\"wicon\" src=\"\" alt=\"Weather icon\">" +
+                    "</div>");
+                $('#wicon').attr('src', iconurl);
             }
             
         });
