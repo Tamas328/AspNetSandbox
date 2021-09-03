@@ -7,6 +7,7 @@
     <script src="./lib/jquery/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="img/title_icon.png" type="image/icon type">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Google</title>
 </head>
 <body>
@@ -60,9 +61,9 @@
             </form>
         </div>
         <div class="alts">
-            <textarea id="weatherForecast">
+            <div id="weatherForecast">
                 
-            </textarea>
+            </div>
             <!--google offered in:
             <a href="https://www.google.com/setprefs?sig=0_mgvm-vyimxwqqfkofeoyr1vujec%3d&amp;hl=ro&amp;source=homepage&amp;sa=x&amp;ved=0ahukewjkz4ehx5lyahuzqueahuinam8q2zgbca4">
                 Română
@@ -115,9 +116,11 @@
         };
 
         $.ajax(settings).done(function (response) {
-            console.log(response);
-            /*let textArea = document.getElementById('#weatherForecast');*/
-            $('#weatherForecast').val("The weather for tomorrow: " + response[0].summary);
+            for (var i = 0; i < response.length; ++i) {
+                console.log(response[i]);
+                $('#weatherForecast').append("<div class=\"weatherContainer\">" + moment(response[i].date).format('dddd') + "<br>Temperature: " + response[i].temperatureC + "<br>Summary: " + response[i].summary + "</div>");
+            }
+            
         });
     </script>
 </body>

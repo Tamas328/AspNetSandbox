@@ -419,3 +419,19 @@ a.footer_link {
     width: 20px;
     height: 20px;
 }
+
+#weatherForecast {
+    display: flex;
+    flex-direction: row;
+}
+
+.weatherContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 0 1rem 0 1rem;
+    font-size: 16px;
+    text-align: center;
+}

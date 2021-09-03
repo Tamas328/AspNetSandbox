@@ -15,6 +15,7 @@ namespace AspNetSandbox.Controllers
     {
         private const float KELVIN_CONST = 273.15f;
 
+
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
@@ -27,6 +28,7 @@ namespace AspNetSandbox.Controllers
             return ConvertResponseToWeatherForecast(response.Content);
         }
 
+        [NonAction]
         public IEnumerable<WeatherForecast> ConvertResponseToWeatherForecast(string content, int days = 5)
         {
             var json = JObject.Parse(content);   
@@ -35,12 +37,14 @@ namespace AspNetSandbox.Controllers
                 var jsonDailyWeather = json["daily"][index];
                 var unixDateTime = jsonDailyWeather.Value<long>("dt");
                 var weatherSummary = jsonDailyWeather["weather"][0].Value<string>("main");
+                var weatherIcon = jsonDailyWeather["weather"][0].Value<string>("icon");
 
                 return new WeatherForecast
                 {
                     Date = DateTimeOffset.FromUnixTimeSeconds(unixDateTime).Date,
                     TemperatureC = ExtractCelsiusTemperatureFromDailyWeather(jsonDailyWeather),
-                    Summary = weatherSummary
+                    Summary = weatherSummary,
+                    Icon = weatherIcon
                 };
             }).ToArray();
         }
