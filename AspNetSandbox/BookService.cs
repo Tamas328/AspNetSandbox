@@ -29,11 +29,11 @@ namespace AspNetSandbox
                 Author = "Cal Newport"
             });
         }
-        public IEnumerable<Book> Get()
+        public IEnumerable<Book> GetBooks()
         {
             return books;
         }
-        public Book Get(int id)
+        public Book GetBook(int id)
         {
             try
             {
@@ -45,26 +45,25 @@ namespace AspNetSandbox
             }
         }
 
-        public void Post(Book value)
+        public void AddBook(Book value)
         {
             value.Id = IdCounter++;
             books.Add(value);
         }
 
-        public void Put(int id, Book value)
+        public void UpdateBook(int id, Book value)
         {
             value.Id = id;
             var toUpdateBookIndex = books.FindIndex(book => book.Id == id);
-            if(Get(toUpdateBookIndex) != null)
+            if (GetBook(id) != null)
             {
-                Console.WriteLine(toUpdateBookIndex);
                 books[toUpdateBookIndex] = value;
             }
         }
 
-        public void Delete(int id)
+        public void DeleteBook(int id)
         {
-            books.Remove(Get(id));
+            books.Remove(GetBook(id));
         }
     }
 }

@@ -15,14 +15,14 @@ namespace AspNetSandbox
             var booksService = new BooksService();
 
             // Act
-            booksService.Post(new Book
+            booksService.AddBook(new Book
             {
                 Title = "Test Book Nr.1",
                 Author = "Jack 1",
                 Language = "English"
             });
-            booksService.Delete(2);
-            booksService.Post(new Book
+            booksService.DeleteBook(2);
+            booksService.AddBook(new Book
             {
                 Title = "Test Book Nr.2",
                 Author = "Jack 2",
@@ -30,7 +30,7 @@ namespace AspNetSandbox
             });
 
             // Assert
-            Assert.Equal("Test Book Nr.1", booksService.Get(3).Title);
+            Assert.Equal("Test Book Nr.1", booksService.GetBook(3).Title);
         }
     }
 }
