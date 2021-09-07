@@ -117,14 +117,12 @@
 
         $.ajax(settings).done(function (response) {
             for (var i = 0; i < response.length; ++i) {
-                console.log(response[i]);
                 var iconurl = "http://openweathermap.org/img/w/" + response[i].icon + ".png";
-                console.log(iconurl);
-                $('#weatherForecast').append("<div class=\"weatherContainer\">" +
-                    moment(response[i].date).format('dddd') + "<br>Temperature: " +
-                    response[i].temperatureC + "<br>Summary: " +
+                $('#weatherForecast').append("<div class=\"weatherContainer\"><p class='day'>" +
+                    moment(response[i].date).format('dddd') + "</p><br><p class='temperature'>" +
+                    response[i].temperatureC + "°C</p><br><p class='summary'>" +
                     response[i].summary +
-                    "<img id=\"wicon\" src=" + iconurl + ">" +
+                    "</p><img id=\"wicon\" src=" + iconurl + ">" +
                     "</div>");
                 
             }

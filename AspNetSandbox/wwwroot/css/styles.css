@@ -428,10 +428,29 @@ a.footer_link {
 .weatherContainer {
     display: flex;
     flex-direction: column;
-    background-color: #f2f2f2;
-    padding: 20px;
+    background-color: #252836;
+    opacity: 0.92;
+    color: #fff;
     border-radius: 15px;
-    margin: 1rem 1rem 0 1rem;
+    padding: 20px 30px;
+    width: 150px;
+    margin: 0 10px;
     font-size: 16px;
     text-align: center;
+}
+
+.day {
+    font-weight: bold;
+    font-size: 24px;
+    margin: 0 auto;
+}
+
+.temperature {
+    font-size: 20px;
+    margin: 0 auto;
+}
+
+.summary {
+    font-size: 20px;
+    margin: 0 auto;
 }
