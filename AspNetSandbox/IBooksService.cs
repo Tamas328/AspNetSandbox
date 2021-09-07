@@ -7,7 +7,7 @@ namespace AspNetSandbox
         void Delete(int id);
         Book Get(int id);
         void Post(Book value);
-        void Put(int id, string value);
+        void Put(int id, Book value);
         IEnumerable<Book> Get();
     }
 }

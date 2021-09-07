@@ -7,6 +7,7 @@ namespace AspNetSandbox
 {
     public class BooksService : IBooksService
     {
+        private int IdCounter = 1;
         private List<Book> books;
 
         public BooksService()
@@ -14,7 +15,7 @@ namespace AspNetSandbox
             books = new List<Book>();
             books.Add(new Book
             {
-                Id = books.Count + 1,
+                Id = IdCounter++,
                 Title = "Game of Thrones",
                 Language = "English",
                 Author = "George R. R. Martin"
@@ -22,7 +23,7 @@ namespace AspNetSandbox
 
             books.Add(new Book
             {
-                Id = books.Count + 1,
+                Id = IdCounter++,
                 Title = "Deep Work",
                 Language = "English",
                 Author = "Cal Newport"
@@ -34,18 +35,31 @@ namespace AspNetSandbox
         }
         public Book Get(int id)
         {
-            return books.Single(book => book.Id == id);
+            try
+            {
+                return books.Single(book => book.Id == id);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public void Post(Book value)
         {
-            value.Id = books.Count + 1;
+            value.Id = IdCounter++;
             books.Add(value);
         }
 
-        public void Put(int id, string value)
+        public void Put(int id, Book value)
         {
-
+            value.Id = id;
+            var toUpdateBookIndex = books.FindIndex(book => book.Id == id);
+            if(Get(toUpdateBookIndex) != null)
+            {
+                Console.WriteLine(toUpdateBookIndex);
+                books[toUpdateBookIndex] = value;
+            }
         }
 
         public void Delete(int id)

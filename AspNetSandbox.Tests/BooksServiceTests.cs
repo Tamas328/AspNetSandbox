@@ -30,7 +30,7 @@ namespace AspNetSandbox
             });
 
             // Assert
-            Assert.Equal("Test Book Nr.2", booksService.Get(3).Title);
+            Assert.Equal("Test Book Nr.1", booksService.Get(3).Title);
         }
     }
 }
