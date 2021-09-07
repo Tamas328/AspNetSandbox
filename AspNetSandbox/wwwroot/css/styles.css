@@ -261,11 +261,9 @@ a {
     display: flex;
     line-height: 28px;
     font-family: arial, sans-serif;
-    flex-shrink: 0;
-    box-sizing: border-box;
-    flex-grow: 1;
     justify-content: center;
-    margin-bottom: 24px;
+    margin: 2rem auto;
+    flex-wrap: wrap;
 }
 
     .alts a {
@@ -423,6 +421,8 @@ a.footer_link {
 #weatherForecast {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .weatherContainer {
@@ -431,7 +431,7 @@ a.footer_link {
     background-color: #f2f2f2;
     padding: 20px;
     border-radius: 15px;
-    margin: 0 1rem 0 1rem;
+    margin: 1rem 1rem 0 1rem;
     font-size: 16px;
     text-align: center;
 }
