@@ -12,9 +12,9 @@ namespace AspNetSandbox
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private List<Book> books;
+        private static List<Book> books;
 
-        public BooksController()
+        static BooksController()
         {
             books = new List<Book>();
             books.Add(new Book
