@@ -9,7 +9,7 @@ namespace AspNetSandbox
     public class BooksServiceTests
     {
         [Fact]
-        public void BooksServiceTest()
+        public void BooksServiceAddDeleteTest()
         {
             // Assume
             var booksService = new BooksService();
@@ -31,6 +31,24 @@ namespace AspNetSandbox
 
             // Assert
             Assert.Equal("Test Book Nr.1", booksService.GetBook(3).Title);
+        }
+
+        [Fact]
+        public void BookServiceUpdateTest()
+        {
+            // Assume
+            var booksService = new BooksService();
+
+            // Act
+            booksService.UpdateBook(2, new Book
+            {
+                Title = "Funky Business",
+                Author = "Jonas Ridderstrale",
+                Language = "English"
+            });
+
+            // Assert
+            Assert.Equal("Funky Business", booksService.GetBook(2).Title);
         }
     }
 }

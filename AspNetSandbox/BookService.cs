@@ -54,7 +54,7 @@ namespace AspNetSandbox
         public void UpdateBook(int id, Book value)
         {
             value.Id = id;
-            var toUpdateBookIndex = books.FindIndex(book => book.Id == id);
+            var toUpdateBookIndex = books.FindIndex(_ => _.Id == id);
             if (GetBook(id) != null)
             {
                 books[toUpdateBookIndex] = value;
