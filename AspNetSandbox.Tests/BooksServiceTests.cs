@@ -17,20 +17,20 @@ namespace AspNetSandbox
             // Act
             booksService.AddBook(new Book
             {
-                Title = "Test Book Nr.1",
-                Author = "Jack 1",
+                Title = "Harry Potter and the Goblet of Fire",
+                Author = "JK Rowling",
                 Language = "English"
             });
             booksService.DeleteBook(2);
             booksService.AddBook(new Book
             {
-                Title = "Test Book Nr.2",
-                Author = "Jack 2",
+                Title = "The Happiest Man on Earth",
+                Author = "Eddie Jaku",
                 Language = "English"
             });
 
             // Assert
-            Assert.Equal("Test Book Nr.1", booksService.GetBook(3).Title);
+            Assert.Equal("Harry Potter and the Goblet of Fire", booksService.GetBook(3).Title);
         }
 
         [Fact]
