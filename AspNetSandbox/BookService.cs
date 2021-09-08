@@ -18,7 +18,7 @@ namespace AspNetSandbox
                 Id = IdCounter++,
                 Title = "Game of Thrones",
                 Language = "English",
-                Author = "George R. R. Martin"
+                Author = "George R. R. Martin",
             });
 
             books.Add(new Book
@@ -26,7 +26,7 @@ namespace AspNetSandbox
                 Id = IdCounter++,
                 Title = "Deep Work",
                 Language = "English",
-                Author = "Cal Newport"
+                Author = "Cal Newport",
             });
         }
         public IEnumerable<Book> GetBooks()

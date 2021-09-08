@@ -19,14 +19,14 @@ namespace AspNetSandbox
             {
                 Title = "Harry Potter and the Goblet of Fire",
                 Author = "JK Rowling",
-                Language = "English"
+                Language = "English",
             });
             booksService.DeleteBook(2);
             booksService.AddBook(new Book
             {
                 Title = "The Happiest Man on Earth",
                 Author = "Eddie Jaku",
-                Language = "English"
+                Language = "English",
             });
 
             // Assert
@@ -44,7 +44,7 @@ namespace AspNetSandbox
             {
                 Title = "Funky Business",
                 Author = "Jonas Ridderstrale",
-                Language = "English"
+                Language = "English",
             });
 
             // Assert
