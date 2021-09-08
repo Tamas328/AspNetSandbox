@@ -35,7 +35,7 @@ namespace AspNetSandbox
         }
         public Book GetBook(int id)
         {
-            return books.Single(book => book.Id == id);
+            return books.Single(_ => _.Id == id);
         }
 
         public void AddBook(Book value)

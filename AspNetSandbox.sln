@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.31605.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetSandbox", "AspNetSandbox\AspNetSandbox.csproj", "{32F91BEC-CA4F-422B-B6ED-3FC73ADE4282}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetSandbox.Tests", "AspNetSandbox.Tests\AspNetSandbox.Tests.csproj", "{E285526D-1429-4BEC-B6EC-4105C508BA47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DockerSandBox", "DockerSandBox\DockerSandBox.csproj", "{1FB33B4A-EE0C-4067-8F4E-F8C1586D27FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerSandBox", "DockerSandBox\DockerSandBox.csproj", "{1FB33B4A-EE0C-4067-8F4E-F8C1586D27FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksServiceTests", "BooksServiceTests\BooksServiceTests.csproj", "{CEF1CD91-EA7F-47D5-A818-B398BE4A67C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastControllerTests", "WeatherForecastControllerTests\WeatherForecastControllerTests.csproj", "{04F0AC6B-C1EF-4750-A78F-8E8576CCB37D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +21,18 @@ Global
 		{32F91BEC-CA4F-422B-B6ED-3FC73ADE4282}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32F91BEC-CA4F-422B-B6ED-3FC73ADE4282}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32F91BEC-CA4F-422B-B6ED-3FC73ADE4282}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E285526D-1429-4BEC-B6EC-4105C508BA47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E285526D-1429-4BEC-B6EC-4105C508BA47}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E285526D-1429-4BEC-B6EC-4105C508BA47}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E285526D-1429-4BEC-B6EC-4105C508BA47}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1FB33B4A-EE0C-4067-8F4E-F8C1586D27FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1FB33B4A-EE0C-4067-8F4E-F8C1586D27FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FB33B4A-EE0C-4067-8F4E-F8C1586D27FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FB33B4A-EE0C-4067-8F4E-F8C1586D27FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEF1CD91-EA7F-47D5-A818-B398BE4A67C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEF1CD91-EA7F-47D5-A818-B398BE4A67C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEF1CD91-EA7F-47D5-A818-B398BE4A67C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEF1CD91-EA7F-47D5-A818-B398BE4A67C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04F0AC6B-C1EF-4750-A78F-8E8576CCB37D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04F0AC6B-C1EF-4750-A78F-8E8576CCB37D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04F0AC6B-C1EF-4750-A78F-8E8576CCB37D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04F0AC6B-C1EF-4750-A78F-8E8576CCB37D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

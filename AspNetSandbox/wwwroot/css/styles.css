@@ -428,7 +428,7 @@ a.footer_link {
 .weatherContainer {
     display: flex;
     flex-direction: column;
-    background-color: #252836;
+    background: linear-gradient(to bottom, #57c1eb 0%,#246fa8 100%);
     opacity: 0.92;
     color: #fff;
     border-radius: 15px;
