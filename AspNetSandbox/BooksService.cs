@@ -7,15 +7,15 @@ namespace AspNetSandbox
 {
     public class BooksService : IBooksService
     {
-        private int IdCounter = 1;
-        private List<Book> books;
+        private readonly List<Book> books;
+        private int idCounter = 1;
 
         public BooksService()
         {
             books = new List<Book>();
             books.Add(new Book
             {
-                Id = IdCounter++,
+                Id = idCounter++,
                 Title = "Game of Thrones",
                 Language = "English",
                 Author = "George R. R. Martin",
@@ -23,16 +23,18 @@ namespace AspNetSandbox
 
             books.Add(new Book
             {
-                Id = IdCounter++,
+                Id = idCounter++,
                 Title = "Deep Work",
                 Language = "English",
                 Author = "Cal Newport",
             });
         }
+
         public IEnumerable<Book> GetBooks()
         {
             return books;
         }
+
         public Book GetBook(int id)
         {
             return books.Single(_ => _.Id == id);
@@ -40,7 +42,7 @@ namespace AspNetSandbox
 
         public void AddBook(Book value)
         {
-            value.Id = IdCounter++;
+            value.Id = idCounter++;
             books.Add(value);
         }
 
