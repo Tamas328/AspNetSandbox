@@ -53,20 +53,17 @@ namespace AspNetSandbox
             else
             {
                 app.UseExceptionHandler("/Error");
+
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
-            var defaultFilesOptions = new DefaultFilesOptions();
-            defaultFilesOptions.DefaultFileNames = new List<string>();
-            defaultFilesOptions.DefaultFileNames.Add("index.html");
-            app.UseDefaultFiles(defaultFilesOptions);
 
-            /*app.UseDefaultFiles(new DefaultFilesOptions
+            app.UseDefaultFiles(new DefaultFilesOptions
             {
-                DefaultFileNames = new List<string> { "index.html" }
-            });*/
+                DefaultFileNames = new List<string> { "index.html" },
+            });
 
             app.UseStaticFiles();
 

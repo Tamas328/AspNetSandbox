@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetSandbox.Controllers
 {
+    /// <summary>
+    ///   <br />
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class BooksController : ControllerBase
@@ -25,6 +28,10 @@ namespace AspNetSandbox.Controllers
         }
 
         // GET api/<BooksController>/5
+
+        /// <summary>Gets the specified book by id.</summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>Book object.</returns>
         [HttpGet("{id}")]
         public ActionResult Get(int id)
         {

@@ -1,7 +1,7 @@
-using AspNetSandbox;
-using AspNetSandbox.Controllers;
 using System;
 using System.IO;
+using AspNetSandbox;
+using AspNetSandbox.Controllers;
 using Xunit;
 
 namespace AspNetSandbox.Tests

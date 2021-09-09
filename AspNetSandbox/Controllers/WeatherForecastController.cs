@@ -40,7 +40,8 @@ namespace AspNetSandbox.Controllers
         {
             var json = JObject.Parse(content);
 
-            return Enumerable.Range(1, days).Select(index => {
+            return Enumerable.Range(1, days).Select(index =>
+            {
                 var jsonDailyWeather = json["daily"][index];
                 var unixDateTime = jsonDailyWeather.Value<long>("dt");
                 var weatherSummary = jsonDailyWeather["weather"][0].Value<string>("main");
