@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetSandbox.Models;
 
-namespace AspNetSandbox
+namespace AspNetSandbox.Models
 {
     public class Book
     {
