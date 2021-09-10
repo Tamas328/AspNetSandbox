@@ -1,11 +1,24 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
 
-namespace DBSandbox.Data.Migrations
+namespace AspNetSandbox.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {
+        /// <summary>
+        ///   <para>
+        /// Builds the operations that will migrate the database 'up'.
+        /// </para>
+        ///   <para>
+        /// That is, builds the operations that will take the database from the state left in by the
+        /// previous migration so that it is up-to-date with regard to this migration.
+        /// </para>
+        ///   <para>
+        /// This method must be overridden in each class the inherits from <see cref="T:Microsoft.EntityFrameworkCore.Migrations.Migration">Migration</see>.
+        /// </para>
+        /// </summary>
+        /// <param name="migrationBuilder">The <see cref="T:Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder">MigrationBuilder</see> that will build the operations.</param>
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -15,7 +28,7 @@ namespace DBSandbox.Data.Migrations
                     Id = table.Column<string>(nullable: false),
                     Name = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true)
+                    ConcurrencyStamp = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -40,7 +53,7 @@ namespace DBSandbox.Data.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -55,7 +68,7 @@ namespace DBSandbox.Data.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
-                    ClaimValue = table.Column<string>(nullable: true)
+                    ClaimValue = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -76,7 +89,7 @@ namespace DBSandbox.Data.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
-                    ClaimValue = table.Column<string>(nullable: true)
+                    ClaimValue = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -96,7 +109,7 @@ namespace DBSandbox.Data.Migrations
                     LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
                     ProviderKey = table.Column<string>(maxLength: 128, nullable: false),
                     ProviderDisplayName = table.Column<string>(nullable: true),
-                    UserId = table.Column<string>(nullable: false)
+                    UserId = table.Column<string>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -114,7 +127,7 @@ namespace DBSandbox.Data.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
-                    RoleId = table.Column<string>(nullable: false)
+                    RoleId = table.Column<string>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -140,7 +153,7 @@ namespace DBSandbox.Data.Migrations
                     UserId = table.Column<string>(nullable: false),
                     LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
                     Name = table.Column<string>(maxLength: 128, nullable: false),
-                    Value = table.Column<string>(nullable: true)
+                    Value = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -193,6 +206,21 @@ namespace DBSandbox.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
         }
 
+        /// <summary>
+        ///   <para>
+        /// Builds the operations that will migrate the database 'down'.
+        /// </para>
+        ///   <para>
+        /// That is, builds the operations that will take the database from the state left in by
+        /// this migration so that it returns to the state that it was in before this migration was applied.
+        /// </para>
+        ///   <para>
+        /// This method must be overridden in each class the inherits from <see cref="T:Microsoft.EntityFrameworkCore.Migrations.Migration">Migration</see> if
+        /// both 'up' and 'down' migrations are to be supported. If it is not overridden, then calling it
+        /// will throw and it will not be possible to migrate in the 'down' direction.
+        /// </para>
+        /// </summary>
+        /// <param name="migrationBuilder">The <see cref="T:Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder">MigrationBuilder</see> that will build the operations.</param>
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

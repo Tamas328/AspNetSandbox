@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DBSandbox.Data.Migrations
+namespace AspNetSandbox.Data.Migrations
 {
     public partial class AddBooks : Migration
     {

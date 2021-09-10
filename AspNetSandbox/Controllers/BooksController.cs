@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AspNetSandbox.Models;
+using AspNetSandbox.Data;
+using Microsoft.EntityFrameworkCore;
+using AspNetSandbox.Data;
 
 namespace AspNetSandbox.Controllers
 {
@@ -14,18 +17,19 @@ namespace AspNetSandbox.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
+    	private readonly ApplicationDbContext _context;
         private readonly IBooksService booksService;
 
-        public BooksController(IBooksService booksService)
+        public BooksController(ApplicationDbContext context)
         {
-            this.booksService = booksService;
+            _context = context;
         }
 
         // GET: api/<BooksController>
         [HttpGet]
-        public IEnumerable<Book> Get()
+        public async Task<IActionResult> Get()
         {
-            return booksService.GetBooks();
+            return Ok(await _context.Book.ToListAsync());
         }
 
         // GET api/<BooksController>/5
@@ -34,11 +38,13 @@ namespace AspNetSandbox.Controllers
         /// <param name="id">The identifier.</param>
         /// <returns>Book object.</returns>
         [HttpGet("{id}")]
-        public ActionResult Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
             try
             {
-                return Ok(booksService.GetBook(id));
+            	var book = await _context.Book
+                .FirstOrDefaultAsync(m => m.Id == id);
+                return Ok(book);
             }
             catch (Exception)
             {
@@ -51,11 +57,20 @@ namespace AspNetSandbox.Controllers
         /// <summary>
         /// Adds a new Book object.
         /// </summary>
-        /// <param name="value">The value.</param>
+        /// <param name="book">The value.</param>
         [HttpPost]
-        public void Post([FromBody] Book value)
+        public async Task<IActionResult> Post([FromBody] Book book)
         {
-            booksService.AddBook(value);
+            if (ModelState.IsValid)
+            {
+                _context.Add(book);
+                await _context.SaveChangesAsync();
+                return Ok();
+            } 
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // PUT api/<BooksController>/5
@@ -64,11 +79,13 @@ namespace AspNetSandbox.Controllers
         /// Updates a Book object by id.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        /// <param name="value">The value.</param>
+        /// <param name="book">The value.</param>
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Book value)
+        public async Task<IActionResult> Put(int id, [FromBody] Book book)
         {
-            booksService.UpdateBook(id, value);
+            _context.Update(book);
+            await _context.SaveChangesAsync();
+            return Ok();
         }
 
         // DELETE api/<BooksController>/5
@@ -78,9 +95,12 @@ namespace AspNetSandbox.Controllers
         /// </summary>
         /// <param name="id">The identifier.</param>
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            booksService.DeleteBook(id);
+            var book = await _context.Book.FindAsync(id);
+            _context.Book.Remove(book);
+            await _context.SaveChangesAsync();
+            return Ok();
         }
     }
 }
