@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AspNetSandbox.Models;
 
-namespace AspNetSandbox
+namespace AspNetSandbox.Services
 {
     public class BooksInMemoryRepository : IBookRepository
     {

@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using AspNetSandbox.Models;
 using AspNetSandbox.Data;
 using Microsoft.EntityFrameworkCore;
-using AspNetSandbox.Data;
 
 namespace AspNetSandbox.Controllers
 {
