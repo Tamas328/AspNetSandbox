@@ -7,13 +7,13 @@ using AspNetSandbox.Models;
 
 namespace AspNetSandbox.Data
 {
-    public class BooksServiceTests
+    public class BooksInMemoryRepositoryTests
     {
         [Fact]
         public void BooksServiceAddDeleteTest()
         {
             // Assume
-            var booksService = new BooksService();
+            var booksService = new BooksInMemoryRepository();
 
             // Act
             booksService.AddBook(new Book
@@ -38,7 +38,7 @@ namespace AspNetSandbox.Data
         public void BookServiceUpdateTest()
         {
             // Assume
-            var booksService = new BooksService();
+            var booksService = new BooksInMemoryRepository();
 
             // Act
             booksService.UpdateBook(2, new Book

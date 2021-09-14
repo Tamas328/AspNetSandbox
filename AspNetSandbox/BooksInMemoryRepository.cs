@@ -6,12 +6,12 @@ using AspNetSandbox.Models;
 
 namespace AspNetSandbox
 {
-    public class BooksService : IBooksService
+    public class BooksInMemoryRepository : IBookRepository
     {
         private readonly List<Book> books;
         private int idCounter = 1;
 
-        public BooksService()
+        public BooksInMemoryRepository()
         {
             books = new List<Book>();
             books.Add(new Book
