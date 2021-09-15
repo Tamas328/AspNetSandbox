@@ -22,10 +22,10 @@
         <hr />
     </div>
 </div>
-@*<div class="row">
+<div class="row">
     <div class="col-6">
-        <ul id="messageslist">
-            @for (var i = 0; i < model.count; i++)
+        <ul id="messagesList">
+            @*@for (var i = 0; i < model.count; i++)
             {
                 var message = model[i];
 
@@ -34,10 +34,10 @@
                 <li>
                     @message.user says @message.messagecontent
                 </li>
-            }
+            }*@
         </ul>
     </div>
-</div>*@
+</div>
 @section scripts {
     <script src="~/lib/microsoft-signalr/signalr.js"></script>
     <script src="~/js/chat.js"></script>

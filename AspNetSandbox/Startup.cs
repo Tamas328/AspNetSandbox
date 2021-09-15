@@ -48,7 +48,7 @@ namespace AspNetSandbox
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
             });
-
+            services.AddSignalR();
             services.AddSingleton<IBookRepository, BooksInMemoryRepository>();
         }
 
@@ -89,6 +89,7 @@ namespace AspNetSandbox
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
+                endpoints.MapHub<MessageHub>("/messagehub");
             });
         }
     }
