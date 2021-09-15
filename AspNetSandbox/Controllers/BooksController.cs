@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using AspNetSandbox.Models;
 using AspNetSandbox.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.SignalR;
+using AspNetSandbox.DTOs;
+using AutoMapper;
 
 namespace AspNetSandbox.Controllers
 {
@@ -17,15 +20,19 @@ namespace AspNetSandbox.Controllers
     public class BooksController : ControllerBase
     {
         private readonly IBookRepository repository;
+        private readonly IHubContext<MessageHub> hubContext;
+        private readonly IMapper mapper;
 
-        public BooksController(IBookRepository repository)
+       public BooksController(IBookRepository repository, IHubContext<MessageHub> hubContext, IMapper mapper)
         {
             this.repository = repository;
+            this.hubContext = hubContext;
+            this.mapper = mapper;
         }
 
         // GET: api/<BooksController>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public IActionResult Get()
         {
             return Ok(repository.GetBooks());
         }
@@ -36,7 +43,7 @@ namespace AspNetSandbox.Controllers
         /// <param name="id">The identifier.</param>
         /// <returns>Book object.</returns>
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public IActionResult Get(int id)
         {
             try
             {
@@ -53,13 +60,15 @@ namespace AspNetSandbox.Controllers
         /// <summary>
         /// Adds a new Book object.
         /// </summary>
-        /// <param name="book">The value.</param>
+        /// <param name="bookDto">The value.</param>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Book book)
+        public async Task<IActionResult> Post([FromBody] CreateBookDto bookDto)
         {
             if (ModelState.IsValid)
             {
+                Book book = mapper.Map<Book>(bookDto);
                 repository.AddBook(book);
+                await hubContext.Clients.All.SendAsync("AddedBook", bookDto);
                 return Ok();
             } 
             else
@@ -74,11 +83,13 @@ namespace AspNetSandbox.Controllers
         /// Updates a Book object by id.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        /// <param name="book">The value.</param>
+        /// <param name="bookDto">The value.</param>
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Book book)
+        public async Task<IActionResult> PutAsync(int id, [FromBody] CreateBookDto bookDto)
         {
+            Book book = mapper.Map<Book>(bookDto);
             repository.UpdateBook(id, book);
+            await hubContext.Clients.All.SendAsync("EditedBook", bookDto);
             return Ok();
         }
 
@@ -89,8 +100,10 @@ namespace AspNetSandbox.Controllers
         /// </summary>
         /// <param name="id">The identifier.</param>
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
+            Book book = repository.GetBook(id);
+            hubContext.Clients.All.SendAsync("DeletedBook", book);
             repository.DeleteBook(id);
             return Ok();
         }

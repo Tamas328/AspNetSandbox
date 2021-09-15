@@ -1,8 +1,10 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using AspNetSandbox.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 
 namespace AspNetSandbox.Pages.Shared
@@ -11,10 +13,14 @@ namespace AspNetSandbox.Pages.Shared
     public class EditModel : PageModel
     {
         private readonly AspNetSandbox.Data.ApplicationDbContext context;
+        private readonly IHubContext<MessageHub> hubContext;
+        private readonly IMapper mapper;
 
-        public EditModel(AspNetSandbox.Data.ApplicationDbContext context)
+        public EditModel(AspNetSandbox.Data.ApplicationDbContext context, IHubContext<MessageHub> hubContext, IMapper mapper)
         {
             this.context = context;
+            this.hubContext = hubContext;
+            this.mapper = mapper;
         }
 
         [BindProperty]
@@ -46,6 +52,9 @@ namespace AspNetSandbox.Pages.Shared
                 return Page();
             }
 
+            Book book = mapper.Map<Book>(Book);
+            context.Book.Add(book);
+            await hubContext.Clients.All.SendAsync("EditedBook", Book);
             this.context.Attach(Book).State = EntityState.Modified;
 
             try

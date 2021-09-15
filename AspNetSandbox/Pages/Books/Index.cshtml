@@ -1,14 +1,12 @@
 ﻿@page
 @model AspNetSandbox.Pages.Shared.IndexModel
 
-@{
-    ViewData["Title"] = "Index";
-}
+@{ ViewData["Title"] = "Index"; }
 
 <h1>Books</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a class="btn btn-success" asp-page="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -28,22 +26,25 @@
     <tbody>
         @foreach (var item in Model.Book)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Author)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Language)
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Author)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Language)
+    </td>
+    <td>
+        <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a>
+        <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
+        <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+    </td>
+</tr>}
     </tbody>
 </table>
+@section scripts {
+    <script src="~/lib/microsoft-signalr/signalr.js"></script>
+    <script src="~/js/books.js"></script>
+}
