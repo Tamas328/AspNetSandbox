@@ -16,19 +16,18 @@ namespace AspNetSandbox.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-    	private readonly ApplicationDbContext _context;
-        private readonly IBookRepository booksService;
+        private readonly IBookRepository repository;
 
-        public BooksController(ApplicationDbContext context)
+        public BooksController(IBookRepository repository)
         {
-            _context = context;
+            this.repository = repository;
         }
 
         // GET: api/<BooksController>
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _context.Book.ToListAsync());
+            return Ok(repository.GetBooks());
         }
 
         // GET api/<BooksController>/5
@@ -41,9 +40,7 @@ namespace AspNetSandbox.Controllers
         {
             try
             {
-            	var book = await _context.Book
-                .FirstOrDefaultAsync(m => m.Id == id);
-                return Ok(book);
+                return Ok(repository.GetBook(id));
             }
             catch (Exception)
             {
@@ -62,8 +59,7 @@ namespace AspNetSandbox.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(book);
-                await _context.SaveChangesAsync();
+                repository.AddBook(book);
                 return Ok();
             } 
             else
@@ -82,8 +78,7 @@ namespace AspNetSandbox.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] Book book)
         {
-            _context.Update(book);
-            await _context.SaveChangesAsync();
+            repository.UpdateBook(id, book);
             return Ok();
         }
 
@@ -96,9 +91,7 @@ namespace AspNetSandbox.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var book = await _context.Book.FindAsync(id);
-            _context.Book.Remove(book);
-            await _context.SaveChangesAsync();
+            repository.DeleteBook(id);
             return Ok();
         }
     }
