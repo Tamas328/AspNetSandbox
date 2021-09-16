@@ -68,7 +68,7 @@ namespace AspNetSandbox.Controllers
             {
                 Book book = mapper.Map<Book>(bookDto);
                 repository.AddBook(book);
-                await hubContext.Clients.All.SendAsync("AddedBook", bookDto);
+                await hubContext.Clients.All.SendAsync("AddedBook", book);
                 return Ok();
             } 
             else
@@ -89,7 +89,7 @@ namespace AspNetSandbox.Controllers
         {
             Book book = mapper.Map<Book>(bookDto);
             repository.UpdateBook(id, book);
-            await hubContext.Clients.All.SendAsync("EditedBook", bookDto);
+            await hubContext.Clients.All.SendAsync("EditedBook", book);
             return Ok();
         }
 

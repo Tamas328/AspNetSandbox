@@ -23,10 +23,10 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="tbody">
         @foreach (var item in Model.Book)
         {
-<tr>
+        <tr id="book-@item.Id">
     <td>
         @Html.DisplayFor(modelItem => item.Title)
     </td>

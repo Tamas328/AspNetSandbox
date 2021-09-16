@@ -10,9 +10,9 @@ connection.start().then(function () {
 
 connection.on("AddedBook", (book) => {
     console.log("Book added: " + JSON.stringify(book));
-    $("tbody")[0].append(`<tr>
+    var row = `<tr id=book-${book.id}>
         <td>
-            ${book.title}added
+            ${book.title}
         </td>
         <td>
             ${book.author}
@@ -21,17 +21,37 @@ connection.on("AddedBook", (book) => {
             ${book.language}
         </td>
         <td>
-            <a href="/Books/Edit?id=${book.id}">Edit</a> |
-            <a href="/Books/Details?id=${book.id}">Details</a> |
-            <a href="/Books/Delete?id=${book.id}">Delete</a>
+            <a href="/Books/Edit?id=${book.id}" class="btn btn-secondary">Edit</a>
+            <a href="/Books/Details?id=${book.id}" class="btn btn-info">Details</a>
+            <a href="/Books/Delete?id=${book.id}" class="btn btn-danger">Delete</a>
         </td>
-    </tr>`)
+    </tr>`;
+    $("#tbody")[0].innerHTML += row;
 });
 
 connection.on("EditedBook", (book) => {
     console.log("Edited book: " + JSON.stringify(book));
+    var row = document.getElementById(`book-${book.id}`);
+    row.innerHTML = `<tr id=book-${book.id}>
+        <td>
+            ${book.title}
+        </td>
+        <td>
+            ${book.author}
+        </td>
+        <td>
+            ${book.language}
+        </td>
+        <td>
+            <a href="/Books/Edit?id=${book.id}" class="btn btn-secondary">Edit</a>
+            <a href="/Books/Details?id=${book.id}" class="btn btn-info">Details</a>
+            <a href="/Books/Delete?id=${book.id}" class="btn btn-danger">Delete</a>
+        </td>
+    </tr>`;
 });
 
 connection.on("DeletedBook", (book) => {
     console.log("Deleted book: " + JSON.stringify(book));
+    var row = document.getElementById(`book-${book.id}`);
+    row.parentNode.removeChild(row);
 });

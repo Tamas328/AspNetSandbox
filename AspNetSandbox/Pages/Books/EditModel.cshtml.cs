@@ -52,14 +52,12 @@ namespace AspNetSandbox.Pages.Shared
                 return Page();
             }
 
-            Book book = mapper.Map<Book>(Book);
-            context.Book.Add(book);
-            await hubContext.Clients.All.SendAsync("EditedBook", Book);
             this.context.Attach(Book).State = EntityState.Modified;
 
             try
             {
                 await this.context.SaveChangesAsync();
+                await hubContext.Clients.All.SendAsync("EditedBook", Book);
             }
             catch (DbUpdateConcurrencyException)
             {
