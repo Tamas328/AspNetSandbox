@@ -14,5 +14,7 @@ namespace AspNetSandbox.Models
         public string Author { get; set; }
 
         public string Language { get; set; }
+
+        public double Price { get; set; }
     }
 }
