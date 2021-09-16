@@ -15,6 +15,6 @@ namespace AspNetSandbox.Models
 
         public string Language { get; set; }
 
-        public double Price { get; set; }
+        public decimal PurchasePrice { get; set; }
     }
 }
