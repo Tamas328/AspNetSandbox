@@ -12,9 +12,6 @@ using AutoMapper;
 
 namespace AspNetSandbox.Controllers
 {
-    /// <summary>
-    ///   <br />
-    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class BooksController : ControllerBase
@@ -31,10 +28,17 @@ namespace AspNetSandbox.Controllers
         }
 
         // GET: api/<BooksController>
+
+        /// <summary>
+        /// Gets all book objects.
+        /// </summary>
+        /// <returns>ReadBookDto objects.</returns>
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(repository.GetBooks());
+            IEnumerable<Book> books = repository.GetBooks();
+            IEnumerable<ReadBookDto> readBooksDto = mapper.Map<IEnumerable<ReadBookDto>>(books);
+            return Ok(readBooksDto);
         }
 
         // GET api/<BooksController>/5
