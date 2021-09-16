@@ -41,13 +41,15 @@ namespace AspNetSandbox.Controllers
 
         /// <summary>Gets the specified book by id.</summary>
         /// <param name="id">The identifier.</param>
-        /// <returns>Book object.</returns>
+        /// <returns>ReadBookDto object.</returns>
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             try
             {
-                return Ok(repository.GetBook(id));
+                Book book = repository.GetBook(id);
+                ReadBookDto readBookDto = mapper.Map<ReadBookDto>(book);
+                return Ok(readBookDto);
             }
             catch (Exception)
             {
