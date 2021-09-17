@@ -61,7 +61,7 @@ namespace AspNetSandbox
             {
                 return ConvertConnectionString(connectionString);
             }
-            return Configuration.GetConnectionString("DefaultConnection");
+            return Configuration.GetConnectionString("Heroku");
         }
 
         public static string ConvertConnectionString(string connectionString)
