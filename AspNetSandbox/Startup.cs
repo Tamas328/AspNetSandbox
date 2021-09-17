@@ -67,11 +67,13 @@ namespace AspNetSandbox
         public static string ConvertConnectionString(string connectionString)
         {
             Uri uri = new Uri(connectionString);
+
             int port = uri.Port;
             string database = uri.AbsolutePath.TrimStart('/');
             string host = uri.Host;
             string userId = uri.UserInfo.Split(':')[0];
             string password = uri.UserInfo.Split(':')[1];
+
             return $"Port={port}; Database={database}; Host={host}; User Id={userId}; Password={password}; SSL Mode=Require; Trust Server Certificate=true";
         }
 
