@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure;
 
 namespace AspNetSandbox
 {
@@ -32,9 +33,9 @@ namespace AspNetSandbox
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-        	services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    GetConnectionString()));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -51,6 +52,21 @@ namespace AspNetSandbox
             });
             services.AddSignalR();
             services.AddSingleton<IBookRepository, BooksInMemoryRepository>();
+        }
+
+        private string GetConnectionString()
+        {
+            var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
+            if(connectionString != null)
+            {
+                return ConvertConnectionString(connectionString);
+            }
+            return Configuration.GetConnectionString("DefaultConnection");
+        }
+
+        private string ConvertConnectionString(string connectionString)
+        {
+            throw new NotImplementedException();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
