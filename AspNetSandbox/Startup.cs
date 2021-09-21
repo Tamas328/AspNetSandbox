@@ -61,7 +61,7 @@ namespace AspNetSandbox
             {
                 return ConvertConnectionString(connectionString);
             }
-            return Configuration.GetConnectionString("Heroku");
+            return Configuration.GetConnectionString("DefaultConnection");
         }
 
         public static string ConvertConnectionString(string connectionString)
@@ -101,6 +101,19 @@ namespace AspNetSandbox
             });
 
             app.UseStaticFiles();
+
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                var applicationDbContext = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
+                if(applicationDbContext.Book.Any())
+                {
+                    Console.WriteLine("The books are there.");
+                }
+                else
+                {
+                    Console.WriteLine("No books.");
+                }
+            }
 
             app.UseRouting();
 
