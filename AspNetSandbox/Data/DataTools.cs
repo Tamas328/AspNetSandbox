@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AspNetSandbox.Models;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,23 @@ namespace AspNetSandbox.Data
                 }
                 else
                 {
-                    Console.WriteLine("There are no books.");
+                    applicationDbContext.Add(new Book {
+                        Id = 1,
+                        Title = "Harry Potter and the Goblet of Fire",
+                        Author = "JK Rowling",
+                        Language = "English",
+                        PurchasePrice = 50,
+                    });
+                    Console.WriteLine("Added book with title: Harry Potter and the Goblet of Fire");
+                    applicationDbContext.Add(new Book {
+                        Id = 2,
+                        Title = "The Happiest Man on Earth",
+                        Author = "Eddie Jaku",
+                        Language = "English",
+                        PurchasePrice = 35,
+                    });
+                    Console.WriteLine("Added book with title: The Happiest Man on Earth");
+                    applicationDbContext.SaveChangesAsync();
                 }
             }
         }
