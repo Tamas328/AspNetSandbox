@@ -1,12 +1,12 @@
 ﻿# Tamas Sandbox project for Back-end course
 
-<img src="images/books.png" />
-
 Name | Value
 --- | ---
 Language | C#
 Database | Postgres
 Deployed | https://asp-net-sandbox-tamas.herokuapp.com/
+
+<img src="images/books.png" />
 
 ## How to run in Docker from the Command Line
 
