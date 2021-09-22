@@ -1,14 +1,14 @@
 ﻿# Tamas Sandbox project for Back-end course
 
-name | value
+Name | Value
 --- | ---
-language | C#
-database | Postgres
-deployed | https://asp-net-sandbox-tamas.herokuapp.com/
+Language | C#
+Database | Postgres
+Deployed | https://asp-net-sandbox-tamas.herokuapp.com/
 
-## How to run in Docker from the commandline
+## How to run in Docker from the Command Line
 
-Navigate to [AspNetSandbox](AspNetSandbox) directory
+Navigate to [AspNetSandbox](AspNetSandbox) directory.
 
 ### Build in container
 ```
@@ -31,7 +31,7 @@ to remove container
 docker rm web_container_tamas
 ```
 
-## Deploy to heroku
+## Deploy to Heroku
 
 1. Create heroku account
 2. Create application
