@@ -6,6 +6,10 @@ using AspNetSandbox.Models;
 
 namespace AspNetSandbox.Services
 {
+    /// <summary>
+    /// BooksInMemoryRepository service.
+    /// </summary>
+    /// <seealso cref="AspNetSandbox.IBookRepository" />
     public class BooksInMemoryRepository : IBookRepository
     {
         private readonly List<Book> books;

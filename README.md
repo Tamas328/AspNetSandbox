@@ -1,6 +1,16 @@
-﻿## How to run in Docker from the commandline
+﻿# Tamas Sandbox project for Back-end course
 
-Build in container
+name | value
+--- | ---
+language | C#
+database | Postgres
+deployed | https://asp-net-sandbox-tamas.herokuapp.com/
+
+## How to run in Docker from the commandline
+
+Navigate to [AspNetSandbox](AspNetSandbox) directory
+
+### Build in container
 ```
 docker build -t web_tamas .
 ```
