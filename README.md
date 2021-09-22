@@ -1,5 +1,7 @@
 ﻿# Tamas Sandbox project for Back-end course
 
+<img src="images/books.png" />
+
 Name | Value
 --- | ---
 Language | C#
