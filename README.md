@@ -2,7 +2,7 @@
 
 Name | Value
 --- | ---
-Language | C#132
+Language | C#
 Database | Postgres
 Deployed | https://asp-net-sandbox-tamas.herokuapp.com/
 
