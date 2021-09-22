@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using AspNetSandbox.Models;
-using AspNetSandbox.Data;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.SignalR;
 using AspNetSandbox.DTOs;
+using AspNetSandbox.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 
 namespace AspNetSandbox.Controllers
 {
@@ -20,7 +17,7 @@ namespace AspNetSandbox.Controllers
         private readonly IHubContext<MessageHub> hubContext;
         private readonly IMapper mapper;
 
-       public BooksController(IBookRepository repository, IHubContext<MessageHub> hubContext, IMapper mapper)
+        public BooksController(IBookRepository repository, IHubContext<MessageHub> hubContext, IMapper mapper)
         {
             this.repository = repository;
             this.hubContext = hubContext;
@@ -76,7 +73,7 @@ namespace AspNetSandbox.Controllers
                 repository.AddBook(book);
                 await hubContext.Clients.All.SendAsync("AddedBook", book);
                 return Ok();
-            } 
+            }
             else
             {
                 return BadRequest();

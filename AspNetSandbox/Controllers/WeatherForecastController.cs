@@ -16,7 +16,7 @@ namespace AspNetSandbox.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private const float KELVIN_CONST = 273.15f;
+        private const float KELVIN = 273.15f;
 
         /// <summary>
         /// Getting Weather Forecast for 5 days.
@@ -59,7 +59,7 @@ namespace AspNetSandbox.Controllers
 
         private static int ExtractCelsiusTemperatureFromDailyWeather(JToken jsonDailyWeather)
         {
-            return (int)Math.Round(jsonDailyWeather["temp"].Value<double>("day") - KELVIN_CONST);
+            return (int)Math.Round(jsonDailyWeather["temp"].Value<double>("day") - KELVIN);
         }
     }
 }

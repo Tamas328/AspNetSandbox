@@ -16,12 +16,11 @@ namespace AspNetSandbox
 {
     public class Program
     {
-        public class Options
-        {
-            [Option('c', "connectionString", Required = false, HelpText = "Set the default connection string.")]
-            public string ConnectionString { get; set; }
-        }
-
+        /// <summary>
+        /// Mains the specified arguments.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
+        /// <returns></returns>
         public static int Main(string[] args)
         {
             Parser.Default.ParseArguments<Options>(args)
@@ -41,5 +40,11 @@ namespace AspNetSandbox
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+        public class Options
+        {
+            [Option('c', "connectionString", Required = false, HelpText = "Set the default connection string.")]
+            public string ConnectionString { get; set; }
+        }
     }
 }

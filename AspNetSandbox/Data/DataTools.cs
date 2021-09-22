@@ -1,10 +1,8 @@
-﻿using AspNetSandbox.Models;
+﻿using System;
+using System.Linq;
+using AspNetSandbox.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AspNetSandbox.Data
 {
@@ -23,7 +21,8 @@ namespace AspNetSandbox.Data
                 }
                 else
                 {
-                    applicationDbContext.Add(new Book {
+                    applicationDbContext.Add(new Book
+                    {
                         Id = 1,
                         Title = "Harry Potter and the Goblet of Fire",
                         Author = "JK Rowling",
@@ -31,7 +30,8 @@ namespace AspNetSandbox.Data
                         PurchasePrice = 50,
                     });
                     Console.WriteLine("Added book with title: Harry Potter and the Goblet of Fire");
-                    applicationDbContext.Add(new Book {
+                    applicationDbContext.Add(new Book
+                    {
                         Id = 2,
                         Title = "The Happiest Man on Earth",
                         Author = "Eddie Jaku",

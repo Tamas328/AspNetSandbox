@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Xunit;
 using AspNetSandbox.Models;
 using AspNetSandbox.Services;
+using Xunit;
 
 namespace AspNetSandbox.Data
 {

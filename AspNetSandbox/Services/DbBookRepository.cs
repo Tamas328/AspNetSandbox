@@ -1,13 +1,11 @@
-﻿using AspNetSandbox.Data;
-using AspNetSandbox.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using AspNetSandbox.Data;
+using AspNetSandbox.Models;
 
 namespace AspNetSandbox.Services
 {
-    public class DbBookRepository : IBookRepository 
+    public class DbBookRepository : IBookRepository
     {
         private readonly ApplicationDbContext context;
 
@@ -15,6 +13,7 @@ namespace AspNetSandbox.Services
         {
             this.context = context;
         }
+
         public void AddBook(Book book)
         {
             this.context.Add(book);
