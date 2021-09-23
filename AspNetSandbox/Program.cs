@@ -26,7 +26,7 @@ namespace AspNetSandbox
             Parser.Default.ParseArguments<Options>(args)
                    .WithParsed<Options>(options =>
                    {
-                       DataTools.connectionString = $"{options.ConnectionString}";
+                       DataTools.connectionString = options.ConnectionString;
                    });
 
             CreateHostBuilder(args).Build().Run();
